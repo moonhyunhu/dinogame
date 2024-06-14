@@ -1,6 +1,6 @@
 import { CLIENT_VERSION } from './constants.js';
 
-const socket = io('http://localhost:3000', {
+const socket = io('qkqhajdcjddl.shop:5001', {
   query: {
     //현재 event 핸들러에서는 client_version을 체크하지만
     //connection 에서는 client_version을 체크를 안하기 때문에
