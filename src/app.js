@@ -2,11 +2,21 @@ import express from 'express';
 import { createServer } from 'http';
 import initSocket from './init/socket.js';
 import { loadGameAssets } from './init/assets.js';
+import cors from 'cors';
 
 const app = express();
 const server = createServer(app);
 
 const PORT = 5001;
+
+app.use(
+  cors({
+    origin: 'http://15.164.171.110:5001', // 허용할 클라이언트 도메인
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,4 +39,3 @@ server.listen(PORT, async () => {
     console.error('Failed to load game assets: ', err);
   }
 });
-
